@@ -122,6 +122,7 @@ OBJDUMP = objdump
 RANLIB	= ranlib
 
 ifdef CROSS_COMPILE
+$(info cross compilee)
 CC:=$(realpath $(TOOL_COMMON_BASE_DIR)/$(TOOLCHAIN_PATH)/bin/$(CROSS_COMPILE)-$(CC))
 AS:=$(realpath $(TOOL_COMMON_BASE_DIR)/$(TOOLCHAIN_PATH)/bin/$(CROSS_COMPILE)-$(AS))
 LD:=$(realpath $(TOOL_COMMON_BASE_DIR)/$(TOOLCHAIN_PATH)/bin/$(CROSS_COMPILE)-$(LD))

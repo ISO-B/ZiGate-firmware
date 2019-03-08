@@ -348,8 +348,8 @@ $(APP_SRC_DIR)/zps_gen.c $(APP_SRC_DIR)/zps_gen.h: $(APP_SRC_DIR)/$(APP_ZPSCFG) 
 
 endif 
 
-CC = gcc
 
+$(info Using BC: $(CC))
 %.o: %.S
 	$(info Assembling $< ...)
 	$(CC) -c -o $(subst Source,Build,$@) $(CFLAGS) $(INCFLAGS) $< -MD -MF $*.d -MP
