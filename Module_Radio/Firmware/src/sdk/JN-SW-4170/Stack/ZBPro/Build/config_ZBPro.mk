@@ -138,9 +138,13 @@ endif
 $(info BINININ HERE3-4 ...)
 ifeq ($(OPTIONAL_STACK_FEATURES),1)
 ifneq ($(ZBPRO_DEVICE_TYPE), ZED)
+$(info BINININ HERE3-4-1 ...)
 APPLIBS += ZPSIPAN
+$(info BINININ HERE3-4-2 ...)
 else
+$(info BINININ HERE3-4-3 ...)
 APPLIBS += ZPSIPAN_ZED
+$(info BINININ HERE3-4-4 ...)
 endif
 endif
 $(info BINININ HERE3-5 ...)
