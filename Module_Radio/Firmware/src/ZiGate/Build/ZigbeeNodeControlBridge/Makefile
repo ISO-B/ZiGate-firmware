@@ -55,7 +55,7 @@ ZNCLKCMD                = AppBuildZBPro.ld
 JENNIC_PCB              = DEVKIT5
 endif
 endif
-ZBPRO_DEVICE_TYPE		= ZCR
+ZBPRO_DEVICE_TYPE        = ZCR
 JENNIC_MAC             ?= MiniMacShim
 PDM_BUILD_TYPE         ?= _EEPROM
 BAUD                   ?= 1000000
@@ -104,7 +104,7 @@ APP_AHI_CONTROL        ?= 1
 
 CFLAGS  += -DUART_BAUD_RATE=$(BAUD)
 CFLAGS  += -D$(NODE)
-CFLAGS	+= -D$(CRC_NEW)
+CFLAGS    += -D$(CRC_NEW)
 
 ifeq ($(DEBUG), UART1)
 CFLAGS  += -DDBG_ENABLE
@@ -119,9 +119,9 @@ CFLAGS  += -DDEBUG_COMMISSION
 CFLAGS  += -DDEBUG_SCAN_REQ
 CFLAGS  += -DDEBUG_SCAN
 CFLAGS  += -DDEBUG_ZCL
-CFLAGS	+= -DDEBUG_NWK_RECOVERY
-#CFLAGS	+= -DDEBUG_PDM_EXTENDED
-CFLAGS	+= -DDEBUG_ZB_CONTROLBRIDGE_TASK
+CFLAGS    += -DDEBUG_NWK_RECOVERY
+#CFLAGS    += -DDEBUG_PDM_EXTENDED
+CFLAGS    += -DDEBUG_ZB_CONTROLBRIDGE_TASK
 CFLAGS  += -DTRACE_APP
 #CFLAGS += -DDEBUG_SERIAL_LINK
 
@@ -132,15 +132,15 @@ endif
 
 
 ifeq ($(NETWORK_RECOVERY), 1)
-CFLAGS	+= -DNETWORK_RECOVERY
+CFLAGS    += -DNETWORK_RECOVERY
 endif
 
 ifeq ($(STACK_MEASURE), 1)
-CFLAGS	+= -DSTACK_MEASURE
+CFLAGS    += -DSTACK_MEASURE
 endif
 
 ifeq ($(APP_AHI_CONTROL), 1)
-CFLAGS	+= -DAPP_AHI_CONTROL
+CFLAGS    += -DAPP_AHI_CONTROL
 endif
 
 ifneq ($(GP_SUPPORT), 1)
@@ -336,12 +336,12 @@ $(info BHERE10 ...)
 #    rm -f $*.o
 ifeq ($(JENNIC_CHIP_FAMILY),JN517x)
 $(APP_SRC_DIR)/pdum_gen.c $(APP_SRC_DIR)/pdum_gen.h: $(APP_SRC_DIR)/$(APP_ZPSCFG) $(PDUMCONFIG)
-	$(info Configuring the PDUM ...)
-	$(PDUMCONFIG) -z $(TARGET) -e LITTLE_ENDIAN_PROCESSOR -f $< -o $(APP_SRC_DIR)
+    $(info Configuring the PDUM ...)
+    $(PDUMCONFIG) -z $(TARGET) -e LITTLE_ENDIAN_PROCESSOR -f $< -o $(APP_SRC_DIR)
 
 $(APP_SRC_DIR)/zps_gen.c $(APP_SRC_DIR)/zps_gen.h: $(APP_SRC_DIR)/$(APP_ZPSCFG) $(ZPSCONFIG)
-	$(info Configuring the Zigbee Protocol Stack ...)
-	$(ZPSCONFIG) -n $(TARGET) -e LITTLE_ENDIAN_PROCESSOR -t $(JENNIC_CHIP) -l $(ZPS_NWK_LIB) -a $(ZPS_APL_LIB) -c $(TOOL_COMMON_BASE_DIR)/$(TOOLCHAIN_PATH) -f $< -o $(APP_SRC_DIR)
+    $(info Configuring the Zigbee Protocol Stack ...)
+    $(ZPSCONFIG) -n $(TARGET) -e LITTLE_ENDIAN_PROCESSOR -t $(JENNIC_CHIP) -l $(ZPS_NWK_LIB) -a $(ZPS_APL_LIB) -c $(TOOL_COMMON_BASE_DIR)/$(TOOLCHAIN_PATH) -f $< -o $(APP_SRC_DIR)
 
 
 pdum_gen.o zps_gen.o: CFLAGS += -fno-lto
@@ -349,56 +349,56 @@ endif
 
 ifeq ($(JENNIC_CHIP_FAMILY),JN516x)
 $(APP_SRC_DIR)/pdum_gen.c $(APP_SRC_DIR)/pdum_gen.h: $(APP_SRC_DIR)/$(APP_ZPSCFG) $(PDUMCONFIG)
-	$(info Configuring the PDUM ...)
-	$(PDUMCONFIG) -z $(TARGET)  -f $< -o $(APP_SRC_DIR)
+    $(info Configuring the PDUM ...)
+    $(PDUMCONFIG) -z $(TARGET)  -f $< -o $(APP_SRC_DIR)
 
 $(APP_SRC_DIR)/zps_gen.c $(APP_SRC_DIR)/zps_gen.h: $(APP_SRC_DIR)/$(APP_ZPSCFG) $(ZPSCONFIG)
-	$(info Configuring the Zigbee Protocol Stack ...)
-	$(ZPSCONFIG) -n $(TARGET)  -t $(JENNIC_CHIP) -l $(ZPS_NWK_LIB) -a $(ZPS_APL_LIB) -c $(TOOL_COMMON_BASE_DIR)/$(TOOLCHAIN_PATH) -f $< -o $(APP_SRC_DIR)
+    $(info Configuring the Zigbee Protocol Stack ...)
+    $(ZPSCONFIG) -n $(TARGET)  -t $(JENNIC_CHIP) -l $(ZPS_NWK_LIB) -a $(ZPS_APL_LIB) -c $(TOOL_COMMON_BASE_DIR)/$(TOOLCHAIN_PATH) -f $< -o $(APP_SRC_DIR)
 
 endif 
 
 %.o: %.S
-	$(info Assembling $< ...)
-	$(CC) -c -o $(subst Source,Build,$@) $(CFLAGS) $(INCFLAGS) $< -MD -MF $*.d -MP
-	@echo
+    $(info Assembling $< ...)
+    $(CC) -c -o $(subst Source,Build,$@) $(CFLAGS) $(INCFLAGS) $< -MD -MF $*.d -MP
+    @echo
 
 %.o: %.c 
-	$(info Compiling $< ...)
-	$(CC) -c -o $(subst Source,Build,$@) $(CFLAGS) $(INCFLAGS) $< -MD -MF $*.d -MP
-	@echo
+    $(info Compiling $< ...)
+    $(CC) -c -o $(subst Source,Build,$@) $(CFLAGS) $(INCFLAGS) $< -MD -MF $*.d -MP
+    @echo
 
 $(GENERATED_FILE_NAME).elf: $(APPOBJS) $(addsuffix.a,$(addprefix $(COMPONENTS_BASE_DIR)/Library/lib,$(APPLDLIBS))) 
-	$(info Linking $@ ...)
-	$(CC) -Wl,--gc-sections -Wl,-u_AppColdStart -Wl,-u_AppWarmStart $(LDFLAGS) -T$(ZNCLKCMD) -o $@ -Wl,--start-group $(APPOBJS) $(addprefix -l,$(LDLIBS))  -lm -Wl,--end-group -Wl,-Map,$(GENERATED_FILE_NAME).map 
-	 
-	$(SIZE) $@ 
-	date +%c >> $(APP_BASE)/Doc/size.txt
-	$(SIZE) $@ >> $(APP_BASE)/Doc/size.txt
-	
+    $(info Linking $@ ...)
+    $(CC) -Wl,--gc-sections -Wl,-u_AppColdStart -Wl,-u_AppWarmStart $(LDFLAGS) -T$(ZNCLKCMD) -o $@ -Wl,--start-group $(APPOBJS) $(addprefix -l,$(LDLIBS))  -lm -Wl,--end-group -Wl,-Map,$(GENERATED_FILE_NAME).map 
+     
+    $(SIZE) $@ 
+    date +%c >> $(APP_BASE)/Doc/size.txt
+    $(SIZE) $@ >> $(APP_BASE)/Doc/size.txt
+    
 # Do a second linking with LTO disabled
-	$(CC) -Wl,--cref -Wl,--gc-sections -Wl,-u_AppColdStart -Wl,-u_AppWarmStart $(LDFLAGS) -T$(ZNCLKCMD) -L $(SDK_BASE_DIR)/Stack/ZCL/Build/  -o $@ -Wl,--start-group $(APPOBJS) $(addprefix -l,$(LDLIBS)) -lm -Wl,--end-group -fno-lto -Wl,-Map,$(GENERATED_FILE_NAME)_NOLTO.map
+    $(CC) -Wl,--cref -Wl,--gc-sections -Wl,-u_AppColdStart -Wl,-u_AppWarmStart $(LDFLAGS) -T$(ZNCLKCMD) -L $(SDK_BASE_DIR)/Stack/ZCL/Build/  -o $@ -Wl,--start-group $(APPOBJS) $(addprefix -l,$(LDLIBS)) -lm -Wl,--end-group -fno-lto -Wl,-Map,$(GENERATED_FILE_NAME)_NOLTO.map
 # Run the Pyt
 
 
 ifeq ($(JENNIC_CHIP_FAMILY),JN517x)
 $(GENERATED_FILE_NAME).bin: $(GENERATED_FILE_NAME).elf 
-	$(info Generating binary ...)
-	$(OBJCOPY) -S -O binary $< $@
+    $(info Generating binary ...)
+    $(OBJCOPY) -S -O binary $< $@
 else
 $(GENERATED_FILE_NAME).bin: $(GENERATED_FILE_NAME).elf 
-	$(info Generating binary ...)
-	$(OBJCOPY) -j .version -j .bir -j .flashheader -j .vsr_table -j .vsr_handlers -j .ro_mac_address -j .ro_ota_header -j .ro_se_customData -j .rodata -j .text -j .data -j .bss -j .heap -j .stack -S -O binary $< $@
+    $(info Generating binary ...)
+    $(OBJCOPY) -j .version -j .bir -j .flashheader -j .vsr_table -j .vsr_handlers -j .ro_mac_address -j .ro_ota_header -j .ro_se_customData -j .rodata -j .text -j .data -j .bss -j .heap -j .stack -S -O binary $< $@
     
 endif    
 
-	$(SDK_BASE_DIR)/Tools/Memsize/memsize.exe $(APP_BLD_DIR)/$(GENERATED_FILE_NAME).elf $(APP_BLD_DIR)/$(GENERATED_FILE_NAME)_NOLTO.map $(TARGET).json
+    $(SDK_BASE_DIR)/Tools/Memsize/memsize.exe $(APP_BLD_DIR)/$(GENERATED_FILE_NAME).elf $(APP_BLD_DIR)/$(GENERATED_FILE_NAME)_NOLTO.map $(TARGET).json
 
 ################################################################################
 
 clean:
-	rm -f $(APPOBJS) $(APPDEPS) $(GENERATED_FILE_NAME).bin $(GENERATED_FILE_NAME).elf $(GENERATED_FILE_NAME).map *.o *.d
-	rm -f $(APP_SRC_DIR)/pdum_gen.* $(APP_SRC_DIR)/zps_gen*.* $(APP_SRC_DIR)/pdum_apdu.*
+    rm -f $(APPOBJS) $(APPDEPS) $(GENERATED_FILE_NAME).bin $(GENERATED_FILE_NAME).elf $(GENERATED_FILE_NAME).map *.o *.d
+    rm -f $(APP_SRC_DIR)/pdum_gen.* $(APP_SRC_DIR)/zps_gen*.* $(APP_SRC_DIR)/pdum_apdu.*
 
 ###############################################################################
 
