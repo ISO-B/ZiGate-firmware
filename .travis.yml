@@ -1,0 +1,13 @@
+branches:
+  only:
+  - travis-test
+  
+language: c
+
+env:
+ - NODE=COORDINATOR BAUD=115200 JENNIC_CHIP=JN5168 JENNIC_CHIP_FAMILY=JN516x clean
+
+jobs:
+  include:
+    - stage: test
+      script: ./Module Radio/Firmware/src/ZiGate/Build/ZigbeeNodeControlBridge/make clean
