@@ -20,6 +20,8 @@ jobs:
        - tar xjf ba-elf-gcc-*part2.tar.bz2 -C /tmp/ba-elf-gcc
        - cp -f -r /tmp/ba-elf-gcc /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/
        - ls -la /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/
+       - ls -la /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/ba-elf-gcc/
+       - ls -la /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/ba-elf-gcc/bin/
        - export PATH=/home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/ba-elf-gcc/bin:$PATH
        - rm -rf /tmp/ba-elf-gcc* /tmp/jn516x-sdk*
        - ba-elf-gcc --version ;
