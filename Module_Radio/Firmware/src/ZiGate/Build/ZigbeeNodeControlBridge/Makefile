@@ -282,16 +282,20 @@ endif
 ###############################################################################
 ###############################################################################
 # Optional stack features to pull relevant libraries into the build.
-$(info BHERE ...)
+
 OPTIONAL_STACK_FEATURES = $(shell $(ZPSCONFIG) -n $(TARGET) -f $(APP_SRC_DIR)/$(APP_ZPSCFG) -y )
-$(info BHERE2 ...)
+
 ###############################################################################
 # Configure for the selected chip or chip family
-
+$(info BHERE1 ...)
 include $(SDK_BASE_DIR)/Chip/Common/Build/config.mk
+$(info BHERE2 ...)
 include $(SDK_BASE_DIR)/Platform/Common/Build/config.mk
+$(info BHERE3 ...)
 include $(SDK_BASE_DIR)/Stack/Common/Build/config.mk
+$(info BHERE4 ...)
 include $(SDK_BASE_DIR)/Components/BDB/Build/config.mk
+$(info BHERE5 ...)
 
 ###############################################################################
 
@@ -310,6 +314,7 @@ APPDEPS         = $(APPOBJS:.o=.d)
 # Add application libraries before chip specific libraries to linker so
 # symbols are resolved correctly (i.e. ordering is significant for GCC)
 
+$(info BHERE6 ...)
 APPLDLIBS := $(foreach lib,$(APPLIBS),$(if $(wildcard $(addprefix $(COMPONENTS_BASE_DIR)/Library/lib,$(addsuffix _$(JENNIC_CHIP).a,$(lib)))),$(addsuffix _$(JENNIC_CHIP),$(lib)),$(addsuffix _$(JENNIC_CHIP_FAMILY),$(lib))))
 LDLIBS := $(APPLDLIBS) $(LDLIBS)
 LDLIBS += JPT_$(JENNIC_CHIP)
