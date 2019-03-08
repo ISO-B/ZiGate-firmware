@@ -22,7 +22,7 @@ jobs:
        - ls -la /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/
        - ls -la /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/ba-elf-gcc/
        - ls -la /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/ba-elf-gcc/bin/
-       - chmod 775 /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/ba-elf-gcc/bin/*
+       - chmod a+x /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/ba-elf-gcc/bin/*
        - export PATH=/home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/ba-elf-gcc/bin:$PATH
        - rm -rf /tmp/ba-elf-gcc* /tmp/jn516x-sdk*
        - /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/ba-elf-gcc/bin/ba-elf-gcc --version ;
