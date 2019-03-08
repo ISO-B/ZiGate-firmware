@@ -329,6 +329,7 @@ $(info BHERE8 ...)
 all: $(GENERATED_FILE_NAME).bin
 
 $(info BHERE9 ...)
+$(info $(APPDEPS) ...)
 -include $(APPDEPS)
 $(info BHERE9-1 ...)
 %.d:
