@@ -107,6 +107,7 @@ SUBWCREV ?= $(TOOL_BASE_DIR)/TortoiseSVN/bin/subwcrev
 CC	= gcc
 AS	= as
 LD	= ld
+$(info Using BC: $(CC))
 ifeq ($(JENNIC_CHIP_FAMILY),JN517x)
 $(info Using gcc-ar)
 AR	= gcc-ar
