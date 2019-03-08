@@ -120,14 +120,14 @@ APPLIBS +=PDUM
 APPLIBS +=ZPSAPL
 APPLIBS +=Random
 
-
+$(info BINININ HERE3-1 ...)
 INCFLAGS += $(addsuffix /Include,$(addprefix -I$(COMPONENTS_BASE_DIR)/,$(APPLIBS)))
 INCFLAGS += -I$(COMPONENTS_BASE_DIR)/PDM/Include
-
+$(info BINININ HERE3-2 ...)
 ifneq ($(PDM_BUILD_TYPE),_NONE)
 APPLIBS +=PDM$(PDM_BUILD_TYPE)_NO_RTOS
 endif
-
+$(info BINININ HERE3-3 ...)
 ifeq ($(TRACE), 1)
 CFLAGS  += -DDBG_ENABLE
 $(info Building trace version ...)
@@ -135,7 +135,7 @@ APPLIBS +=DBG
 else
 INCFLAGS += -I$(COMPONENTS_BASE_DIR)/DBG/Include
 endif
-
+$(info BINININ HERE3-4 ...)
 ifeq ($(OPTIONAL_STACK_FEATURES),1)
 ifneq ($(ZBPRO_DEVICE_TYPE), ZED)
 APPLIBS += ZPSIPAN
@@ -143,7 +143,7 @@ else
 APPLIBS += ZPSIPAN_ZED
 endif
 endif
-
+$(info BINININ HERE3-5 ...)
 ifeq ($(OPTIONAL_STACK_FEATURES),2)
 ifneq ($(ZBPRO_DEVICE_TYPE), ZED)
 APPLIBS += ZPSGP
@@ -151,7 +151,7 @@ else
 APPLIBS += ZPSGP_ZED
 endif
 endif
-
+$(info BINININ HERE3-6 ...)
 ifeq ($(OPTIONAL_STACK_FEATURES),3)
 ifneq ($(ZBPRO_DEVICE_TYPE), ZED)
 APPLIBS += ZPSGP
