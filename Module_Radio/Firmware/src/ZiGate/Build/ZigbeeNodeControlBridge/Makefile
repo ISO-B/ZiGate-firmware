@@ -322,13 +322,15 @@ LDLIBS += JPT_$(JENNIC_CHIP)
 # Dependency rules
 
 .PHONY: all clean
+$(info BHERE7 ...)
 # Path to directories containing application source 
 vpath % $(APP_SRC_DIR):$(APP_COMMON_SRC_DIR):$(UTIL_SRC_DIR):$(ZCL_SRC):$(ZCL_SRC_DIRS):$(BDB_SRC_DIR):$(HWAPI_SRC_DIR)
-
+$(info BHERE8 ...)
 all: $(GENERATED_FILE_NAME).bin
 
--include $(APPDEPS)
-%.d:
+$(info BHERE9 ...)
+-include $(APPDEPS)%.d:
+$(info BHERE10 ...)
 #    rm -f $*.o
 ifeq ($(JENNIC_CHIP_FAMILY),JN517x)
 $(APP_SRC_DIR)/pdum_gen.c $(APP_SRC_DIR)/pdum_gen.h: $(APP_SRC_DIR)/$(APP_ZPSCFG) $(PDUMCONFIG)
