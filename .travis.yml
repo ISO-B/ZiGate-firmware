@@ -10,4 +10,4 @@ env:
 jobs:
   include:
     - stage: test
-      script: ./Module\\ Radio/Firmware/src/ZiGate/Build/ZigbeeNodeControlBridge/make clean
+      script: ./Module\ Radio/Firmware/src/ZiGate/Build/ZigbeeNodeControlBridge/make clean
