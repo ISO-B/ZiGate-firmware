@@ -109,5 +109,6 @@ endif
 ifneq ($(wildcard App_Stack_Size.ld), )
 $(error Found custom App_Stack_Size.ld file. Stack and heap sizes must now be set through the STACK_SIZE and MINIMUM_HEAP_SIZE makefile variables)
 endif
+$(info BINHERE2 ...)
 
 ###############################################################################
