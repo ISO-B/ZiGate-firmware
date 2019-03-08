@@ -42,6 +42,7 @@
 ###############################################################################
 
 # Get ZigBee stack makefile requirements
+$(info BININHERE0 ...)
 ifneq ($(JENNIC_CHIP_FAMILY),JN518x)
 include $(STACK_BASE_DIR)/ZBPro/Build/config_ZBPro.mk
 else
