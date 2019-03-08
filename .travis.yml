@@ -5,9 +5,9 @@ branches:
 language: c
 
 env:
- - NODE=COORDINATOR BAUD=115200 JENNIC_CHIP=JN5168 JENNIC_CHIP_FAMILY=JN516x clean
+ - NODE=COORDINATOR BAUD=115200 JENNIC_CHIP=JN5168 JENNIC_CHIP_FAMILY=JN516x
 
 jobs:
   include:
     - stage: test
-      script: make -C Module_Radio/Firmware/src/ZiGate/Build/ZigbeeNodeControlBridge/ -d clean
+      script: make -C Module_Radio/Firmware/src/ZiGate/Build/ZigbeeNodeControlBridge/ -d all
