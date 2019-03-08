@@ -282,7 +282,7 @@ endif
 ###############################################################################
 ###############################################################################
 # Optional stack features to pull relevant libraries into the build.
-
+$(info BEBUG $(TARGET) $(APP_SRC_DIR)/$(APP_ZPSCFG) ...)
 OPTIONAL_STACK_FEATURES = $(shell $(ZPSCONFIG) -n $(TARGET) -f $(APP_SRC_DIR)/$(APP_ZPSCFG) -y )
 
 ###############################################################################
