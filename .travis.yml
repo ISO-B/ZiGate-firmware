@@ -18,9 +18,8 @@ jobs:
        - tar xjf jn516x-sdk-*.tar.bz2 -C /tmp/jn516x-sdk
        - tar xjf ba-elf-gcc-*part1.tar.bz2 -C /tmp/ba-elf-gcc
        - tar xjf ba-elf-gcc-*part2.tar.bz2 -C /tmp/ba-elf-gcc
-       - mkdir /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/Tools/
-       - cp -f -r /tmp/ba-elf-gcc /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/Tools/
-       - chmod a+x /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/Tools/ba-elf-gcc/bin/*
+       - mkdir /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/sdk/Tools/
+       - cp -f -r /tmp/ba-elf-gcc /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/sdk/Tools/
+       - chmod a+x /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/sdk/Tools/ba-elf-gcc/bin/*
        - rm -rf /tmp/ba-elf-gcc* /tmp/jn516x-sdk*
-       - stat /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/sdk/JN-SW-4170/../Tools/ba-elf-gcc/bin/ba-elf-gcc
       script: make -C Module_Radio/Firmware/src/ZiGate/Build/ZigbeeNodeControlBridge/ all
