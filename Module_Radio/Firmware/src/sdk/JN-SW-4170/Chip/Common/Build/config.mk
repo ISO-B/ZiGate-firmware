@@ -132,5 +132,5 @@ SIZE:=$(realpath $(TOOL_COMMON_BASE_DIR)/$(TOOLCHAIN_PATH)/bin/$(CROSS_COMPILE)-
 OBJCOPY:=$(realpath $(TOOL_COMMON_BASE_DIR)/$(TOOLCHAIN_PATH)/bin/$(CROSS_COMPILE)-$(OBJCOPY))
 OBJDUMP:=$(realpath $(TOOL_COMMON_BASE_DIR)/$(TOOLCHAIN_PATH)/bin/$(CROSS_COMPILE)-$(OBJDUMP))
 endif
-
+$(info Using BC: $(CC))
 ###############################################################################

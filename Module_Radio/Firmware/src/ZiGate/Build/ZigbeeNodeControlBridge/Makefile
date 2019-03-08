@@ -314,7 +314,7 @@ LDLIBS := $(APPLDLIBS) $(LDLIBS)
 LDLIBS += JPT_$(JENNIC_CHIP)
 ###############################################################################
 # Dependency rules
-
+$(info Using BC: $(CC))
 .PHONY: all clean
 # Path to directories containing application source 
 vpath % $(APP_SRC_DIR):$(APP_COMMON_SRC_DIR):$(UTIL_SRC_DIR):$(ZCL_SRC):$(ZCL_SRC_DIRS):$(BDB_SRC_DIR):$(HWAPI_SRC_DIR)
