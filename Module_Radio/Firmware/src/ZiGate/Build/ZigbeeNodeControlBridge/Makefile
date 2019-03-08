@@ -329,7 +329,9 @@ $(info BHERE8 ...)
 all: $(GENERATED_FILE_NAME).bin
 
 $(info BHERE9 ...)
--include $(APPDEPS)%.d:
+-include $(APPDEPS)
+$(info BHERE9-1 ...)
+%.d:
 $(info BHERE10 ...)
 #    rm -f $*.o
 ifeq ($(JENNIC_CHIP_FAMILY),JN517x)
