@@ -13,5 +13,6 @@ jobs:
       os: windows
       before_script:
         - choco install -y msys2
-        - make --help
-      script: cmake -C Module_Radio/Firmware/src/ZiGate/Build/ZigbeeNodeControlBridge/ all
+        - ls
+      script: make --help
+      #script: cmake -C Module_Radio/Firmware/src/ZiGate/Build/ZigbeeNodeControlBridge/ all
