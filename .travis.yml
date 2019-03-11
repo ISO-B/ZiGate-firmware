@@ -11,4 +11,4 @@ jobs:
   include:
     - stage: test
       os: windows
-      script: make -C Module_Radio/Firmware/src/ZiGate/Build/ZigbeeNodeControlBridge/ all
+      script: cmake -C Module_Radio/Firmware/src/ZiGate/Build/ZigbeeNodeControlBridge/ all
