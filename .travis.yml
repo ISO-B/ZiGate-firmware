@@ -13,9 +13,6 @@ jobs:
       os: windows
       before_script:
         - choco install -y make
-        - ls
-        - ls /c/
-        - ls /c/Users/travis/
-        - pwd
-      script: make --help
+        #- cd /c/Users/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/ZiGate/Build/ZigbeeNodeControlBridge/
+      script: make -C /c/Users/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/ZiGate/Build/ZigbeeNodeControlBridge/
       #script: cmake -C Module_Radio/Firmware/src/ZiGate/Build/ZigbeeNodeControlBridge/ all
