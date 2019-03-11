@@ -20,10 +20,8 @@ jobs:
        - tar xjf ba-elf-gcc-*part2.tar.bz2 -C /tmp/ba-elf-gcc
        - mkdir /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/sdk/Tools/
        - cp -f -r /tmp/ba-elf-gcc /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/sdk/Tools/
-       - cp -f -r /tmp/ba-elf-gcc /usr/
        - chmod 777 /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/sdk/Tools/ba-elf-gcc/bin/*
-       - chmod a+x /usr/ba-elf-gcc/bin/*
        - rm -rf /tmp/ba-elf-gcc* /tmp/jn516x-sdk*
+       - gcc --version
        - ls -la /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/sdk/Tools/ba-elf-gcc/bin/
-       - ls -la /usr/ba-elf-gcc/bin/
       script: make -C Module_Radio/Firmware/src/ZiGate/Build/ZigbeeNodeControlBridge/ all
