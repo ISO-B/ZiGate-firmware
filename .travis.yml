@@ -11,6 +11,7 @@ jobs:
   include:
     - stage: test
       before_script:
+       - sudo apt-get install -y build-essential
        - wget http://simonduq.github.io/resources/ba-elf-gcc-4.7.4-part1.tar.bz2
        - wget http://simonduq.github.io/resources/ba-elf-gcc-4.7.4-part2.tar.bz2
        - wget http://simonduq.github.io/resources/jn516x-sdk-4163-1416.tar.bz2
@@ -26,4 +27,6 @@ jobs:
        - rm -rf /tmp/ba-elf-gcc* /tmp/jn516x-sdk*
        - ls -la /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/sdk/Tools/ba-elf-gcc/bin/
        - ls -la /usr/ba-elf-gcc/bin/
+       - export PATH=/usr/ba-elf-gcc/bin:$PATH
+       - ba-elf-gcc --version
       script: make -C Module_Radio/Firmware/src/ZiGate/Build/ZigbeeNodeControlBridge/ all
