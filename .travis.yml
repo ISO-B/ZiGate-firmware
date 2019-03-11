@@ -24,8 +24,9 @@ jobs:
        - sudo cp -f -r /tmp/ba-elf-gcc /usr/
        - chmod 777 /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/sdk/Tools/ba-elf-gcc/bin/*
        - sudo chmod a+x /usr/ba-elf-gcc/bin/*
-       - rm -rf /tmp/ba-elf-gcc* /tmp/jn516x-sdk*
+       - sudo chmod a+x /tmp/ba-elf-gcc/bin/*
        - ls -la /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/sdk/Tools/ba-elf-gcc/bin/
        - ls -la /usr/ba-elf-gcc/bin/
-       - /usr/ba-elf-gcc/bin/ba-elf-gcc --version
+       - /tmp/ba-elf-gcc/bin/ba-elf-gcc --version
+       - rm -rf /tmp/ba-elf-gcc* /tmp/jn516x-sdk*
       script: make -C Module_Radio/Firmware/src/ZiGate/Build/ZigbeeNodeControlBridge/ all
