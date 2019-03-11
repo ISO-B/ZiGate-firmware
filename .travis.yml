@@ -15,6 +15,6 @@ jobs:
         - choco install -y make
         - ls
         - ls /c/
-        - ls /c/tools/
+        - ls /c/Users/
       script: make --help
       #script: cmake -C Module_Radio/Firmware/src/ZiGate/Build/ZigbeeNodeControlBridge/ all
