@@ -10,24 +10,5 @@ env:
 jobs:
   include:
     - stage: test
-      before_script:
-       - sudo apt-get install -y libc6-i386 build-essential gcc-multilib gcc-4.8-multilib g++-multilib g++-4.8-multilib lib32z1 lib32ncurses5 lib32bz2-1.0 libc6-dev libgmp-dev libmpfr-dev libmpc-dev
-       - sudo dpkg --add-architecture i386
-       - wget http://simonduq.github.io/resources/ba-elf-gcc-4.7.4-part1.tar.bz2
-       - wget http://simonduq.github.io/resources/ba-elf-gcc-4.7.4-part2.tar.bz2
-       - wget http://simonduq.github.io/resources/jn516x-sdk-4163-1416.tar.bz2
-       - mkdir /tmp/jn516x-sdk /tmp/ba-elf-gcc
-       - tar xjf jn516x-sdk-*.tar.bz2 -C /tmp/jn516x-sdk
-       - tar xjf ba-elf-gcc-*part1.tar.bz2 -C /tmp/ba-elf-gcc
-       - tar xjf ba-elf-gcc-*part2.tar.bz2 -C /tmp/ba-elf-gcc
-       - mkdir /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/sdk/Tools/
-       - cp -f -r /tmp/ba-elf-gcc /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/sdk/Tools/
-       - sudo cp -f -r /tmp/ba-elf-gcc /usr/
-       - chmod 777 /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/sdk/Tools/ba-elf-gcc/bin/*
-       - sudo chmod a+x /usr/ba-elf-gcc/bin/*
-       - sudo chmod a+x /tmp/ba-elf-gcc/bin/*
-       - ls -la /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/sdk/Tools/ba-elf-gcc/bin/
-       - ls -la /usr/ba-elf-gcc/bin/
-       - rm -rf /tmp/ba-elf-gcc* /tmp/jn516x-sdk*
-       - ls -la /home/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/sdk/JN-SW-4170/Components/MicroSpecific/Include 
+      os: windows
       script: make -C Module_Radio/Firmware/src/ZiGate/Build/ZigbeeNodeControlBridge/ all
