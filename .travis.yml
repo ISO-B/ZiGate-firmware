@@ -12,7 +12,7 @@ jobs:
     - stage: test
       os: windows
       before_script:
-        - choco install -y msys2
+        - choco install -y make
         - ls
         - ls /c/
         - ls /c/tools/msys64/bin/
