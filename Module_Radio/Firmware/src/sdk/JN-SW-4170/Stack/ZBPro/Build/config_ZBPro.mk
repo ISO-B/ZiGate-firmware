@@ -46,7 +46,6 @@ else
     PDUMCONFIG = $(TOOL_BASE_DIR)/PDUMConfig/linuxbin/PDUMConfig
     ZPSCONFIG = $(TOOL_BASE_DIR)/ZPSConfig/linuxbin/ZPSConfig
 endif
-$(info BINININ HERE1 ...)
 STACK_SIZE ?= 5000
 MINIMUM_HEAP_SIZE ?= 2000
 ###############################################################################
@@ -93,7 +92,6 @@ endif
 ###############################################################################
 # RAM based software components
 
-$(info BINININ HERE2 ...)
 CFLAGS += -DPDM_USER_SUPPLIED_ID
 CFLAGS += -DPDM_NO_RTOS
 ifeq ($(PDM_BUILD_TYPE),_EEPROM)
@@ -112,7 +110,6 @@ endif
 
 
 # NB Order is significant for GNU linker
-$(info BINININ HERE3 ...)
 APPLIBS +=PWRM
 APPLIBS +=ZPSTSV
 APPLIBS +=AES_SW
@@ -120,14 +117,11 @@ APPLIBS +=PDUM
 APPLIBS +=ZPSAPL
 APPLIBS +=Random
 
-$(info BINININ HERE3-1 ...)
 INCFLAGS += $(addsuffix /Include,$(addprefix -I$(COMPONENTS_BASE_DIR)/,$(APPLIBS)))
 INCFLAGS += -I$(COMPONENTS_BASE_DIR)/PDM/Include
-$(info BINININ HERE3-2 ...)
 ifneq ($(PDM_BUILD_TYPE),_NONE)
 APPLIBS +=PDM$(PDM_BUILD_TYPE)_NO_RTOS
 endif
-$(info BINININ HERE3-3 ...)
 ifeq ($(TRACE), 1)
 CFLAGS  += -DDBG_ENABLE
 $(info Building trace version ...)
@@ -135,21 +129,13 @@ APPLIBS +=DBG
 else
 INCFLAGS += -I$(COMPONENTS_BASE_DIR)/DBG/Include
 endif
-$(info BINININ HERE3-4 ...)
 ifeq ($(OPTIONAL_STACK_FEATURES),1)
-$(info BINININ HERE3-4-0 ...)
 ifneq ($(ZBPRO_DEVICE_TYPE), ZED)
-$(info BINININ HERE3-4-1 ...)
 APPLIBS += ZPSIPAN
-$(info BINININ HERE3-4-2 ...)
 else
-$(info BINININ HERE3-4-3 ...)
 APPLIBS += ZPSIPAN_ZED
-$(info BINININ HERE3-4-4 ...)
 endif
-$(info BINININ HERE3-4-5 ...)
 endif
-$(info BINININ HERE3-5 ...)
 ifeq ($(OPTIONAL_STACK_FEATURES),2)
 ifneq ($(ZBPRO_DEVICE_TYPE), ZED)
 APPLIBS += ZPSGP
@@ -157,7 +143,6 @@ else
 APPLIBS += ZPSGP_ZED
 endif
 endif
-$(info BINININ HERE3-6 ...)
 ifeq ($(OPTIONAL_STACK_FEATURES),3)
 ifneq ($(ZBPRO_DEVICE_TYPE), ZED)
 APPLIBS += ZPSGP
@@ -168,7 +153,6 @@ APPLIBS += ZPSIPAN_ZED
 endif
 endif
 
-$(info BINININ HERE4 ...)
 ###############################################################################
 # Paths to components provided as source
 
@@ -177,7 +161,6 @@ APPSRC += ZTimer.c
 APPSRC += app_zps_link_keys.c
 ###############################################################################
 # Paths to network and application layer libs for stack config tools
-$(info BINININ HERE5 ...)
 INCFLAGS += -I$(COMPONENTS_BASE_DIR)/ZPSMAC/Include
 INCFLAGS += -I$(COMPONENTS_BASE_DIR)/ZPSNWK/Include
 INCFLAGS += -I$(COMPONENTS_BASE_DIR)/ZigbeeCommon/Include
@@ -202,11 +185,9 @@ endif
 ZPS_APL_LIB = $(COMPONENTS_BASE_DIR)/Library/libZPSAPL_$(JENNIC_CHIP_FAMILY).a
 
 LDFLAGS += -Wl,--gc-sections
-$(info BINININ HERE6 ...)
 #############################LEGACY CHIP END########################################
 
 else  #Configurations for JN518x
-$(info BINININ HERE7 ...)
 JENNIC_CHIP_FAMILY  ?= JN518x
 JENNIC_CHIP         ?= JN5180
 
@@ -246,7 +227,6 @@ else
     ZPSCONFIG  = $(TOOL_BASE_DIR)/ZPSConfig/linuxbin/ZPSConfig
 endif
 JET_BASE            ?= $(SDK2_BASE_DIR)/tools/zigbee_3.0/JET/OTAUtils
-$(info BINININ HERE8 ...)
 ##################################################################################
 ## Source included by default
 
@@ -280,9 +260,7 @@ APPSRC += Debug.c
 
 ##################################################################################
 ## INCLUDE paths
-$(info BINININ HERE9 ...)
 include $(SDK2_BASE_DIR)/devices/$(JENNIC_CHIP)/gcc/config.mk
-$(info BINININ HERE10 ...)
 INCFLAGS += -I$(COMPONENTS_BASE_DIR)/ZPSMAC/Include
 INCFLAGS += -I$(COMPONENTS_BASE_DIR)/ZPSNWK/Include
 INCFLAGS += -I$(COMPONENTS_BASE_DIR)/ZigbeeCommon/Include
@@ -314,7 +292,6 @@ CFLAGS  += -DDBG_ENABLE
 CFLAGS  += -DDEBUG_ENABLE
 $(info Building trace version ...)
 endif 
-$(info BINININ HERE11 ...)
 ##################################################################################
 ## LIBS 
 
@@ -330,7 +307,6 @@ INCFLAGS += $(addsuffix /Include,$(addprefix -I$(FRAMEWORK_BASE_DIR)/,$(APPLIBS)
 
 CFLAGS += -DPDM_USER_SUPPLIED_ID
 CFLAGS += -DPDM_NO_RTOS
-$(info BINININ HERE12 ...)
 ifeq ($(OPTIONAL_STACK_FEATURES),1)
 ifneq ($(ZBPRO_DEVICE_TYPE), ZED)
 APPLIBS += ZPSIPAN
@@ -338,7 +314,6 @@ else
 APPLIBS += ZPSIPAN_ZED
 endif
 endif
-$(info BINININ HERE13 ...)
 ifeq ($(OPTIONAL_STACK_FEATURES),2)
 ifneq ($(ZBPRO_DEVICE_TYPE), ZED)
 APPLIBS += ZPSGP
@@ -366,7 +341,6 @@ else
 $(error ZBPRO_DEVICE_TYPE must be set to either ZCR or ZED)
 endif
 endif
-$(info BINININ HERE14 ...)
 ifeq ($(ZBPRO_DEVICE_TYPE), ZCR)
 ZPS_NWK_LIB = $(COMPONENTS_BASE_DIR)/Library/libZPSNWK_$(JENNIC_CHIP_FAMILY).a
 endif
@@ -374,16 +348,13 @@ ifeq ($(ZBPRO_DEVICE_TYPE), ZED)
 ZPS_NWK_LIB = $(COMPONENTS_BASE_DIR)/Library/libZPSNWK_ZED_$(JENNIC_CHIP_FAMILY).a
 endif
 ZPS_APL_LIB = $(COMPONENTS_BASE_DIR)/Library/libZPSAPL_$(JENNIC_CHIP_FAMILY).a
-$(info BINININ HERE15 ...)
 ZIGBEE_BASE_SRC = $(ZIGBEE_COMMON_SRC):$(WWDT_SRC):$(OS_ABSTRACT_SRC):$(GENERIC_LIST_SRC):$(BOARD_LEVEL_SRC)\
                   :$(CHIP_STARTUP_SRC):$(CHIP_SYSTEM_SRC):$(FSL_RNG_SRC):$(FSL_UART_SRC):$(FSL_FLASH_SRC)\
                   :$(FSL_AES_SRC):$(FSL_COMMON_SRC):$(FSL_INPUTMUX_SRC):$(FSL_FMEAS_SRC):$(FSL_EXCEPTIONS_SRC)\
                   :$(DEBUG_FIFO_SRC)
-$(info BINININ HERE16 ...)
 LDFLAGS += -L  $(COMPONENTS_BASE_DIR)/Library/
 LDFLAGS += -L  $(COMPONENTS_BASE_DIR)/BuildConfig/ZBPro/Build
 LDFLAGS += -Wl,--gc-sections
 LDFLAGS += --specs=nosys.specs
 endif
-$(info BINININ HERE17 ...)
 ###############################################################################

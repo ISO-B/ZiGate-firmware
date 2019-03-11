@@ -42,13 +42,11 @@
 ###############################################################################
 
 # Get ZigBee stack makefile requirements
-$(info BININHERE0 ...)
 ifneq ($(JENNIC_CHIP_FAMILY),JN518x)
 include $(STACK_BASE_DIR)/ZBPro/Build/config_ZBPro.mk
 else
 include $(SDK2_BASE_DIR)/middleware/wireless/zigbee3.0/BuildConfig/ZBPro/Build/config_ZBPro.mk
 endif
-$(info BININHERE1 ...)
 ###############################################################################
 ZCIF_BASE        = $(COMPONENTS_BASE_DIR)/ZCIF
 ZCIF_SRC         = $(ZCIF_BASE)/Source

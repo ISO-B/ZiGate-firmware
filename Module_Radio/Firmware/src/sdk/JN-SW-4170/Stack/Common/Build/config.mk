@@ -93,9 +93,7 @@ $(info JENNIC_STACK is undefined, defaulting to MAC)
 JENNIC_STACK ?= MAC
 endif
 
-$(info BINHERE1 ...)
 include $(STACK_BASE_DIR)/$(JENNIC_STACK)/Build/config_$(JENNIC_STACK).mk
-$(info BINHERE2 ...)
 
 ###############################################################################
 # Setup path for default stack size definition for the selected stack
@@ -111,6 +109,5 @@ endif
 ifneq ($(wildcard App_Stack_Size.ld), )
 $(error Found custom App_Stack_Size.ld file. Stack and heap sizes must now be set through the STACK_SIZE and MINIMUM_HEAP_SIZE makefile variables)
 endif
-$(info BINHERE3 ...)
 
 ###############################################################################
