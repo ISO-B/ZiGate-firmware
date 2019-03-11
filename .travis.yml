@@ -14,5 +14,7 @@ jobs:
       before_script:
         - choco install -y make
         - 7z x /c/Users/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/sdk/Tools.7z -o/c/Users/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/sdk/ -y
+        - mingw --help
+        - mingw make --help
       script: make -d -C /c/Users/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/ZiGate/Build/ZigbeeNodeControlBridge/
       #script: cmake -C Module_Radio/Firmware/src/ZiGate/Build/ZigbeeNodeControlBridge/ all
