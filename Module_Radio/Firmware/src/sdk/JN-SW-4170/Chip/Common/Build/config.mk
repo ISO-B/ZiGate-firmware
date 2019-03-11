@@ -127,6 +127,10 @@ $(info TCBD: $(TOOL_COMMON_BASE_DIR))
 $(info TP: $(TOOLCHAIN_PATH))
 $(info CP: $(CROSS_COMPILE))
 $(info Path: $(TOOL_COMMON_BASE_DIR)/$(TOOLCHAIN_PATH)/bin/$(CROSS_COMPILE)-$(CC))
+myrealpath = $(join \
+             $(filter %:,$(subst :,: ,$1)),\
+             $(realpath $(filter-out %:,$(subst :,: ,$1)))) 
+$(info $(myrealpath $(TOOL_COMMON_BASE_DIR)/$(TOOLCHAIN_PATH)/bin/$(CROSS_COMPILE)-$(CC)))
 CC:=$(realpath /$(TOOL_COMMON_BASE_DIR)/$(TOOLCHAIN_PATH)/bin/$(CROSS_COMPILE)-$(CC))
 AS:=$(realpath $(TOOL_COMMON_BASE_DIR)/$(TOOLCHAIN_PATH)/bin/$(CROSS_COMPILE)-$(AS))
 LD:=$(realpath $(TOOL_COMMON_BASE_DIR)/$(TOOLCHAIN_PATH)/bin/$(CROSS_COMPILE)-$(LD))
