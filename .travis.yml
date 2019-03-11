@@ -29,4 +29,4 @@ jobs:
        - ls -la /usr/ba-elf-gcc/bin/
        - rm -rf /tmp/ba-elf-gcc* /tmp/jn516x-sdk*
       script: /usr/ba-elf-gcc/bin/ba-elf-gcc --version
-      script: make -C Module_Radio/Firmware/src/ZiGate/Build/ZigbeeNodeControlBridge/ all
+      #script: make -C Module_Radio/Firmware/src/ZiGate/Build/ZigbeeNodeControlBridge/ all
