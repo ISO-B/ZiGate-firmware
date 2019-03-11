@@ -13,4 +13,6 @@ jobs:
       os: windows
       before_script:
         - choco install -y msys2
+        - refreshenv
+        - make c:/ISO-B/ZiGate-firmware
       script: cmake -C Module_Radio/Firmware/src/ZiGate/Build/ZigbeeNodeControlBridge/ all
