@@ -15,3 +15,14 @@ jobs:
         - choco install -y make
         - 7z x /c/Users/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/sdk/Tools.7z -o/c/Users/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/sdk/ -y
       script: make -C /c/Users/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/ZiGate/Build/ZigbeeNodeControlBridge/ all
+      
+deploy:
+  provider: releases
+  api_key:
+    secure: qV6BzoTdnHebZNcqyroL0/yHD0cznoYybM8XW6n13JKydjfYQyyXLCr7CyxlV2KE33W6XiaEX/IHVfzBWXqeoM0lAlH/2DknPOlIvE9gxEYTOXdT/fvQ9ej3S0cYq5kIIi8++xt4bOLpWajlT5D5ExYR0xNdJMuxl6aJq0rioKzGrgXPjG4HFnOJ10J+hlfVjobCU45waT6ASkaDomXSbuqXVcwkmIYc2RGH85kmFi3hA34sxUjaUjrPN2J0Yi+QFhJPz7ALvKCQnbhtc5JyJwWJx0ZFy6fuktBFHRRrmPwWfkuOJV885u09doTWs+j7TqYmJks9wuOTVfzXTE7kiIQkwjrB/6kBzaYVWIWFNcySEaK4z9dQluRgJnrq6dYJAz+YngR8QO/K9p9YpgWgOfmo95qEVJnb8ml/89T38DMo/TezvsXlGPO0dU3b96neB97PJ1LVHkfhPNjrBn7VfswD48G+9sjKZWndWOISc34D1YgceuXhjMrTTp7aEdBH+8KXSHaj00L4S+SfGPfmp/NlZvGHg2KHshzz9l23hnok764dEAuY9S6ooL6X4OCrCG6Ma6qDAxXxIqEtnUNFyng1AQVeQkKKAnccrEh6ew4XWWKHxgjm5tJdjhBLhf8jVZGAkC+gsRD3VfwGbEGjS+PUlHfK1PnajrHc1IwiBMI=
+  file: "/c/Users/travis/build/ISO-B/ZiGate-firmware/Module_Radio/Firmware/src/ZiGate/Build/ZigbeeNodeControlBridge/ZigbeeNodeControlBridge_JN5168_COORDINATOR_115200.bin"
+  skip_cleanup: true
+  draft: true
+  on:
+    branch: travis-test
+    
